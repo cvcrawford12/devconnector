@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const config = require("./config/keys");
 
 // Routes
-const auth = require("./routes/api/auth");
+const users = require("./routes/api/users");
 const posts = require("./routes/api/posts")
 const profile = require("./routes/api/profile")
 
@@ -23,7 +23,7 @@ mongoose
 app.get("/", (req, res) => res.send("Hello World"));
 
 // Serve routes
-app.use('/api/auth', auth);
+app.use('/api/users', users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
 
