@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/keys");
+const bodyParser = require('body-parser');
 
 // Routes
 const users = require("./routes/api/users");
@@ -17,6 +18,12 @@ mongoose
   .connect(db)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
+
+  // parse application/x-www-form-urlencoded
+  app.use(bodyParser.urlencoded({ extended: false }));
+
+  // parse application/json
+  app.use(bodyParser.json());
 
 // const db = require("../config/keys").prodURI;
 
