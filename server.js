@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("./config/keys");
 const bodyParser = require('body-parser');
+const passport = require('passport');
 
 // Routes
 const users = require("./routes/api/users");
@@ -27,7 +28,9 @@ mongoose
 
 // const db = require("../config/keys").prodURI;
 
-app.get("/", (req, res) => res.send("Hello World"));
+// Passport middleware config
+app.use(passport.initialize());
+require('./config/passportConfig')(passport);
 
 // Serve routes
 app.use('/api/users', users);
